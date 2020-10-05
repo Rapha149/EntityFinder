@@ -120,12 +120,12 @@ public class Lang {
 	}
 
 	public static boolean isEntityName(String id) {
-		String type = id.startsWith("minecraft:") ? id.substring("minecraft:".length()) : id;
+		String type = id.startsWith(EntityFinder.ID_PREFIX) ? id.substring(EntityFinder.ID_PREFIX.length()) : id;
 		return ENTITIES_LANG.has(type);
 	}
 	
 	public static String getEntityName(String id) {
-		String type = id.startsWith("minecraft:") ? id.substring("minecraft:".length()) : id;
+		String type = id.startsWith(EntityFinder.ID_PREFIX) ? id.substring(EntityFinder.ID_PREFIX.length()) : id;
 		if (ENTITIES_LANG.has(type))
 			return ENTITIES_LANG.get(type).getAsString();
 		return type;

@@ -29,11 +29,11 @@ public class NBTComparer {
 		readNBT(entityNBT, entity);
 		return compare(nbt, entityNBT);
 	}
-	
+
 	public static String checkNBTAndReturnJson(CompoundTag entity, JsonObject nbt) {
 		JsonObject entityNBT = new JsonObject();
 		readNBT(entityNBT, entity);
-		if(compare(nbt, entityNBT))
+		if (compare(nbt, entityNBT))
 			return entityNBT.toString();
 		return null;
 	}
@@ -69,25 +69,30 @@ public class NBTComparer {
 			JsonArray array1 = value1.getAsJsonArray();
 			JsonArray array2 = value2.getAsJsonArray();
 
-			if (array1.size() != array2.size())
-				return false;
 			for (int i = 0; i < array1.size(); i++) {
-				if (!compareValues(array1.get(i), array2.get(i)))
+				boolean existing = false;
+				for (int j = 0; j < array2.size(); j++) {
+					if (compareValues(array1.get(i), array2.get(j))) {
+						existing = true;
+						break;
+					}
+				}
+				if (!existing)
 					return false;
 			}
 		}
 
-		else if(value1.isJsonObject() && value2.isJsonObject()) {
-			if(!compare(value1.getAsJsonObject(), value2.getAsJsonObject()))
+		else if (value1.isJsonObject() && value2.isJsonObject()) {
+			if (!compare(value1.getAsJsonObject(), value2.getAsJsonObject()))
 				return false;
 		}
-		
+
 		else if (value1.isJsonNull() && value2.isJsonNull())
 			return true;
-		
+
 		else
 			return false;
-		
+
 		return true;
 	}
 
@@ -143,7 +148,7 @@ public class NBTComparer {
 			}
 		}
 	}
-	
+
 	private static void readNBTListTag(JsonArray array, ListTag<?> list) {
 		for (int i = 0; i < list.size(); i++) {
 			Tag<?> tag = list.get(i);

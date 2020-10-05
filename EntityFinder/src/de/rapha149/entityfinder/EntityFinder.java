@@ -37,7 +37,8 @@ import net.querz.nbt.tag.ListTag;
 public class EntityFinder {
 
 	private static FileFilter fileFilter = file -> file.getName().endsWith(".mca");
-
+	public static String ID_PREFIX = "minecraft:";
+	
 	private static boolean overworld;
 	private static boolean nether;
 	private static boolean end;
@@ -125,7 +126,7 @@ public class EntityFinder {
 			try {
 				String line = br.readLine();
 				if(Lang.isEntityName(line))
-					line = "{id:\"" + line + "\"}";
+					line = "{id:\"" + (line.startsWith(EntityFinder.ID_PREFIX) ? "" : EntityFinder.ID_PREFIX) + line + "\"}";
 				if(line.trim().isEmpty())
 					line = "{}";
 
