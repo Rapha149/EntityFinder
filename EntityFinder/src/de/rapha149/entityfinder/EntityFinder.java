@@ -96,45 +96,18 @@ public class EntityFinder {
 							int answer = Integer.parseInt(br.readLine());
 
 							if (answer == 1) {
-								System.out.println(Lang.ENTER_NBT_DATA_TO_FIND);
-								while (true) {
-									try {
-										String line = br.readLine();
-										if(line.trim().isEmpty())
-											line = "{}";
-										JsonElement nbt = JsonParser.parseString(line);
-
-										if (nbt.isJsonObject()) {
-											find(nbt.getAsJsonObject());
-											break;
-										} else
-											System.out.println(Lang.WRONG_NBT_DATA);
-									} catch (JsonParseException e) {
-										System.out.println(Lang.WRONG_NBT_DATA);
-									}
-								}
+								System.out.println(Lang.ENTER_NBT_DATA);
+								find(getNBT(br));
 							} else if (answer == 2) {
-								System.out.println(Lang.ENTER_NBT_DATA_TO_FIND);
-								while (true) {
-									try {
-										JsonElement nbt = JsonParser.parseString(br.readLine());
-
-										if (nbt.isJsonObject()) {
-											remove(br, nbt.getAsJsonObject());
-											break;
-										} else
-											System.out.println(Lang.WRONG_NBT_DATA);
-									} catch (JsonParseException e) {
-										System.out.println(Lang.WRONG_NBT_DATA);
-									}
-								}
+								System.out.println(Lang.ENTER_NBT_DATA);
+								remove(br, getNBT(br));
 							} else {
 								System.out.println(Lang.STATE_ONE_OR_TWO);
 								continue;
 							}
 
 							System.exit(0);
-							break;
+							return;
 						} catch (NumberFormatException e) {
 							System.out.println(Lang.STATE_ONE_OR_TWO);
 						}
@@ -145,6 +118,25 @@ public class EntityFinder {
 			}
 		} else
 			System.out.println(Lang.NOT_A_WORLD_FOLDER);
+	}
+	
+	private static JsonObject getNBT(BufferedReader br) throws IOException {
+		while (true) {
+			try {
+				String line = br.readLine();
+				if(Lang.isEntityName(line))
+					line = "{id:\"" + line + "\"}";
+				if(line.trim().isEmpty())
+					line = "{}";
+
+				JsonElement nbt = JsonParser.parseString(line);
+				if (nbt.isJsonObject())
+					return nbt.getAsJsonObject();
+			} catch (JsonParseException e) {
+			}
+
+			System.out.println(Lang.WRONG_NBT_DATA);
+		}
 	}
 
 	private static void find(JsonObject nbt) throws IOException {

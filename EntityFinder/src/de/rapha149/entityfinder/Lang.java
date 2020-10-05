@@ -36,7 +36,7 @@ public class Lang {
 	public static String FIND_OR_REMOVE;
 	public static String STATE_ONE_OR_TWO;
 
-	public static String ENTER_NBT_DATA_TO_FIND;
+	public static String ENTER_NBT_DATA;
 	public static String ONE_ENTITY_FOUND;
 	public static String ENTITIES_FOUND;
 
@@ -64,7 +64,7 @@ public class Lang {
 			NO_REGION_FILES = "Keine Regionen-Dateien gefunden.";
 			SHOW_WORLD_NAME = "Welt gefunden: %s";
 			SOME_FILES_COULD_NOT_BE_READ = "Manche Dateien konnten nicht ausgelesen werden.";
-			ENTER_NBT_DATA_TO_FIND = "Bitte die NBT-Daten zum Filtern angeben. (Nichts schreiben für alle Entitäten)";
+			ENTER_NBT_DATA = "Bitte die NBT-Daten oder die ID der Entität zum Filtern angeben. (Nichts schreiben für alle Entitäten)";
 			WRONG_NBT_DATA = "NBT-Daten konnten nicht gelesen werden.";
 			NO_ENTITIES_FOUND = "Keine Entitäten gefunden.";
 
@@ -95,7 +95,7 @@ public class Lang {
 			NO_REGION_FILES = "No region files found.";
 			SHOW_WORLD_NAME = "World found: %s";
 			SOME_FILES_COULD_NOT_BE_READ = "Some files could not be read.";
-			ENTER_NBT_DATA_TO_FIND = "Please enter the NBT data for filtering. (Write nothing for all entities)";
+			ENTER_NBT_DATA = "Please enter the NBT data or the entity id for filtering. (Write nothing for all entities)";
 			WRONG_NBT_DATA = "NBT data could not be read.";
 			NO_ENTITIES_FOUND = "No entities found.";
 
@@ -119,8 +119,13 @@ public class Lang {
 				.getAsJsonObject();
 	}
 
+	public static boolean isEntityName(String id) {
+		String type = id.startsWith("minecraft:") ? id.substring("minecraft:".length()) : id;
+		return ENTITIES_LANG.has(type);
+	}
+	
 	public static String getEntityName(String id) {
-		String type = id.substring("minecraft:".length());
+		String type = id.startsWith("minecraft:") ? id.substring("minecraft:".length()) : id;
 		if (ENTITIES_LANG.has(type))
 			return ENTITIES_LANG.get(type).getAsString();
 		return type;
