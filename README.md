@@ -44,7 +44,7 @@ Java 8 or higher. [Java download](https://java.com/en/)
 - As an API I used the [NBT-API](https://github.com/Querz/NBT) by [Querz](https://github.com/Querz/).
 
 ## Konsole öffnen / Open console
-![cmd tutorial](https://github.com/Rapha149/EntityFinder/blob/master/cmd.gif)
+![cmd tutorial](https://github.com/Rapha149/EntityFinder/blob/main/cmd.gif)
 
 ## Download
 [EntityFinder.jar](https://www.dropbox.com/s/z5229j375xkv6z3/EntityFinder.jar?dl=1)
