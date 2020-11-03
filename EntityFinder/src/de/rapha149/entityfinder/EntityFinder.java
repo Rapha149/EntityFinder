@@ -1,7 +1,6 @@
 package de.rapha149.entityfinder;
 
 import java.io.BufferedReader;
-import java.io.EOFException;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.FileWriter;
@@ -141,7 +140,7 @@ public class EntityFinder {
 	}
 
 	private static void find(JsonObject nbt) throws IOException {
-		boolean exception = false;
+		int exceptions = 0;
 		List<Entity> entities = new ArrayList<>();
 		Map<String, File[]> worlds = new HashMap<>();
 		if (overworld)
@@ -180,8 +179,8 @@ public class EntityFinder {
 							});
 						}
 					}
-				} catch (ClassCastException | EOFException e) {
-					exception = true;
+				} catch (ClassCastException | IOException e) {
+					exceptions++;
 					continue;
 				}
 			}
@@ -217,12 +216,16 @@ public class EntityFinder {
 		} else
 			System.out.println(Lang.NO_ENTITIES_FOUND);
 
-		if (exception)
-			System.out.println(Lang.SOME_FILES_COULD_NOT_BE_READ);
+		if (exceptions > 0) {
+			if (exceptions == 1)
+				System.out.println(Lang.ONE_FILE_COULD_NOT_BE_READ);
+			else
+				System.out.println(String.format(Lang.SOME_FILES_COULD_NOT_BE_READ, exceptions));
+		}
 	}
 
 	private static void remove(BufferedReader br, JsonObject nbt) throws IOException {
-		boolean exception = false;
+		int exceptions = 0;
 		List<File[]> worlds = new ArrayList<>();
 		Map<MCAFile, File> changed = new HashMap<>();
 		if (overworld)
@@ -238,7 +241,7 @@ public class EntityFinder {
 		fileCount = length * 32 * 32;
 		int count = 0;
 
-		int removed = 0;
+		long removed = 0;
 		for (File[] files : worlds) {
 			for (int i = 0; i < files.length; i++) {
 				try {
@@ -262,8 +265,8 @@ public class EntityFinder {
 							}
 						}
 					}
-				} catch (ClassCastException e) {
-					exception = true;
+				} catch (ClassCastException | IOException e) {
+					exceptions++;
 					continue;
 				}
 			}
@@ -302,8 +305,12 @@ public class EntityFinder {
 			}
 		}
 
-		if (exception)
-			System.out.println(Lang.SOME_FILES_COULD_NOT_BE_READ);
+		if (exceptions > 0) {
+			if (exceptions == 1)
+				System.out.println(Lang.ONE_FILE_COULD_NOT_BE_READ);
+			else
+				System.out.println(String.format(Lang.SOME_FILES_COULD_NOT_BE_READ, exceptions));
+		}
 	}
 
 	private static void calcPercent(int completed) {

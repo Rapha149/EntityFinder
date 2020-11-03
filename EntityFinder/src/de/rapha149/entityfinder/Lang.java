@@ -29,6 +29,7 @@ public class Lang {
 	public static String NOT_A_WORLD_FOLDER;
 	public static String NO_REGION_FILES;
 	public static String SHOW_WORLD_NAME;
+	public static String ONE_FILE_COULD_NOT_BE_READ;
 	public static String SOME_FILES_COULD_NOT_BE_READ;
 	public static String WRONG_NBT_DATA;
 	public static String NO_ENTITIES_FOUND;
@@ -63,7 +64,8 @@ public class Lang {
 			NOT_A_WORLD_FOLDER = "Das ist kein Welt-Ordner.";
 			NO_REGION_FILES = "Keine Regionen-Dateien gefunden.";
 			SHOW_WORLD_NAME = "Welt gefunden: %s";
-			SOME_FILES_COULD_NOT_BE_READ = "Manche Dateien konnten nicht ausgelesen werden.";
+			ONE_FILE_COULD_NOT_BE_READ = "Eine Datei konnten nicht ausgelesen werden.";
+			SOME_FILES_COULD_NOT_BE_READ = "%s Dateien konnten nicht ausgelesen werden.";
 			ENTER_NBT_DATA = "Bitte die NBT-Daten oder die ID der Entität zum Filtern angeben. (Nichts schreiben für alle Entitäten)";
 			WRONG_NBT_DATA = "NBT-Daten konnten nicht gelesen werden.";
 			NO_ENTITIES_FOUND = "Keine Entitäten gefunden.";
@@ -94,7 +96,8 @@ public class Lang {
 			NOT_A_WORLD_FOLDER = "This is not a world folder.";
 			NO_REGION_FILES = "No region files found.";
 			SHOW_WORLD_NAME = "World found: %s";
-			SOME_FILES_COULD_NOT_BE_READ = "Some files could not be read.";
+			ONE_FILE_COULD_NOT_BE_READ = "One file could not be read.";
+			SOME_FILES_COULD_NOT_BE_READ = "%s files could not be read.";
 			ENTER_NBT_DATA = "Please enter the NBT data or the entity id for filtering. (Write nothing for all entities)";
 			WRONG_NBT_DATA = "NBT data could not be read.";
 			NO_ENTITIES_FOUND = "No entities found.";
@@ -123,7 +126,7 @@ public class Lang {
 		String type = id.startsWith(EntityFinder.ID_PREFIX) ? id.substring(EntityFinder.ID_PREFIX.length()) : id;
 		return ENTITIES_LANG.has(type);
 	}
-	
+
 	public static String getEntityName(String id) {
 		String type = id.startsWith(EntityFinder.ID_PREFIX) ? id.substring(EntityFinder.ID_PREFIX.length()) : id;
 		if (ENTITIES_LANG.has(type))
