@@ -64,7 +64,7 @@ public class Lang {
 			NOT_A_WORLD_FOLDER = "Das ist kein Welt-Ordner.";
 			NO_REGION_FILES = "Keine Regionen-Dateien gefunden.";
 			SHOW_WORLD_NAME = "Welt gefunden: %s";
-			ONE_FILE_COULD_NOT_BE_READ = "Eine Datei konnten nicht ausgelesen werden.";
+			ONE_FILE_COULD_NOT_BE_READ = "%s Datei konnten nicht ausgelesen werden.";
 			SOME_FILES_COULD_NOT_BE_READ = "%s Dateien konnten nicht ausgelesen werden.";
 			ENTER_NBT_DATA = "Bitte die NBT-Daten oder die ID der Entität zum Filtern angeben. (Nichts schreiben für alle Entitäten)";
 			WRONG_NBT_DATA = "NBT-Daten konnten nicht gelesen werden.";
@@ -96,7 +96,7 @@ public class Lang {
 			NOT_A_WORLD_FOLDER = "This is not a world folder.";
 			NO_REGION_FILES = "No region files found.";
 			SHOW_WORLD_NAME = "World found: %s";
-			ONE_FILE_COULD_NOT_BE_READ = "One file could not be read.";
+			ONE_FILE_COULD_NOT_BE_READ = "%s file could not be read.";
 			SOME_FILES_COULD_NOT_BE_READ = "%s files could not be read.";
 			ENTER_NBT_DATA = "Please enter the NBT data or the entity id for filtering. (Write nothing for all entities)";
 			WRONG_NBT_DATA = "NBT data could not be read.";
@@ -113,7 +113,7 @@ public class Lang {
 			STATE_YES_OR_NO = "State " + YES + " or " + NO + ".";
 			CANCELLED = "Cancelled.";
 			ONE_ENTITY_REMOVED = "%s entity was removed.";
-			ENTITIES_REMOVED = "%s were removed.";
+			ENTITIES_REMOVED = "%s entities were removed.";
 			break;
 		}
 

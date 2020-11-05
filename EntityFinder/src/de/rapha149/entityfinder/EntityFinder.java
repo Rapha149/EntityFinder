@@ -24,10 +24,10 @@ import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
 
 import de.rapha149.entityfinder.Lang.Language;
-import net.querz.mca.Chunk;
+import de.rapha149.querz.Chunk;
+import de.rapha149.querz.MCAFile;
+import de.rapha149.querz.MCAUtil;
 import net.querz.mca.LoadFlags;
-import net.querz.mca.MCAFile;
-import net.querz.mca.MCAUtil;
 import net.querz.nbt.io.NBTUtil;
 import net.querz.nbt.tag.CompoundTag;
 import net.querz.nbt.tag.DoubleTag;
@@ -37,7 +37,7 @@ public class EntityFinder {
 
 	private static FileFilter fileFilter = file -> file.getName().endsWith(".mca");
 	public static String ID_PREFIX = "minecraft:";
-	
+
 	private static boolean overworld;
 	private static boolean nether;
 	private static boolean end;
@@ -119,14 +119,15 @@ public class EntityFinder {
 		} else
 			System.out.println(Lang.NOT_A_WORLD_FOLDER);
 	}
-	
+
 	private static JsonObject getNBT(BufferedReader br) throws IOException {
 		while (true) {
 			try {
 				String line = br.readLine();
-				if(Lang.isEntityName(line))
-					line = "{id:\"" + (line.startsWith(EntityFinder.ID_PREFIX) ? "" : EntityFinder.ID_PREFIX) + line + "\"}";
-				if(line.trim().isEmpty())
+				if (Lang.isEntityName(line))
+					line = "{id:\"" + (line.startsWith(EntityFinder.ID_PREFIX) ? "" : EntityFinder.ID_PREFIX) + line
+							+ "\"}";
+				if (line.trim().isEmpty())
 					line = "{}";
 
 				JsonElement nbt = JsonParser.parseString(line);
@@ -181,6 +182,7 @@ public class EntityFinder {
 					}
 				} catch (ClassCastException | IOException e) {
 					exceptions++;
+					e.printStackTrace();
 					continue;
 				}
 			}
@@ -195,7 +197,7 @@ public class EntityFinder {
 				long dy = c1.ry - c2.ry;
 				long dz = c1.rz - c2.rz;
 
-				if(id != 0)
+				if (id != 0)
 					return id;
 				if (dx != 0)
 					return Long.signum(dx);
@@ -217,10 +219,9 @@ public class EntityFinder {
 			System.out.println(Lang.NO_ENTITIES_FOUND);
 
 		if (exceptions > 0) {
-			if (exceptions == 1)
-				System.out.println(Lang.ONE_FILE_COULD_NOT_BE_READ);
-			else
-				System.out.println(String.format(Lang.SOME_FILES_COULD_NOT_BE_READ, exceptions));
+			System.out.printf(String.format(
+					exceptions == 1 ? Lang.ONE_FILE_COULD_NOT_BE_READ : Lang.SOME_FILES_COULD_NOT_BE_READ, exceptions))
+					.println();
 		}
 	}
 
@@ -289,7 +290,7 @@ public class EntityFinder {
 						count++;
 						calcPercent(count);
 					}
-					
+
 					System.out.printf(removed == 1 ? Lang.ONE_ENTITY_REMOVED : Lang.ENTITIES_REMOVED, removed)
 							.println();
 					return;
@@ -306,10 +307,9 @@ public class EntityFinder {
 		}
 
 		if (exceptions > 0) {
-			if (exceptions == 1)
-				System.out.println(Lang.ONE_FILE_COULD_NOT_BE_READ);
-			else
-				System.out.println(String.format(Lang.SOME_FILES_COULD_NOT_BE_READ, exceptions));
+			System.out.printf(String.format(
+					exceptions == 1 ? Lang.ONE_FILE_COULD_NOT_BE_READ : Lang.SOME_FILES_COULD_NOT_BE_READ, exceptions))
+					.println();
 		}
 	}
 
