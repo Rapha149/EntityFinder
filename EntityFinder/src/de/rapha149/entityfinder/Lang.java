@@ -66,22 +66,22 @@ public class Lang {
 			SHOW_WORLD_NAME = "Welt gefunden: %s";
 			ONE_FILE_COULD_NOT_BE_READ = "%s Datei konnten nicht ausgelesen werden.";
 			SOME_FILES_COULD_NOT_BE_READ = "%s Dateien konnten nicht ausgelesen werden.";
-			ENTER_NBT_DATA = "Bitte die NBT-Daten oder die ID der Entit‰t zum Filtern angeben. (Nichts schreiben f¸r alle Entit‰ten)";
+			ENTER_NBT_DATA = "Bitte die NBT-Daten oder die ID der Entit√§t zum Filtern angeben. (Nichts schreiben f√ºr alle Entit√§ten)";
 			WRONG_NBT_DATA = "NBT-Daten konnten nicht gelesen werden.";
-			NO_ENTITIES_FOUND = "Keine Entit‰ten gefunden.";
+			NO_ENTITIES_FOUND = "Keine Entit√§ten gefunden.";
 
-			FIND_OR_REMOVE = "Willst du Entit‰ten\n(1) suchen oder\n(2) entfernen?";
+			FIND_OR_REMOVE = "Willst du Entit√§ten\n(1) suchen oder\n(2) entfernen?";
 			STATE_ONE_OR_TWO = "Bitte die Zahl 1 oder 2 angeben.";
 
-			ONE_ENTITY_FOUND = "%s Entit‰t wurde gefunden. Output-Datei: \"%s\"";
-			ENTITIES_FOUND = "%s Entit‰ten wurden gefunden. Output-Datei: \"%s\"";
+			ONE_ENTITY_FOUND = "%s Entit√§t wurde gefunden. Output-Datei: \"%s\"";
+			ENTITIES_FOUND = "%s Entit√§ten wurden gefunden. Output-Datei: \"%s\"";
 
-			REMOVE_ONE_ENTITY = "Willst du wirklich %s Entit‰t entfernen? (" + YES + "/" + NO + ")";
-			REMOVE_ENTITIES = "Willst du wirklich %s Entit‰ten entfernen? (" + YES + "/" + NO + ")";
+			REMOVE_ONE_ENTITY = "Willst du wirklich %s Entit√§t entfernen? (" + YES + "/" + NO + ")";
+			REMOVE_ENTITIES = "Willst du wirklich %s Entit√§ten entfernen? (" + YES + "/" + NO + ")";
 			STATE_YES_OR_NO = "Bitte " + YES + " oder " + NO + " angeben.";
 			CANCELLED = "Abgebrochen.";
-			ONE_ENTITY_REMOVED = "%s Entit‰t wurde entfernt.";
-			ENTITIES_REMOVED = "%s Entit‰ten wurden entfernt.";
+			ONE_ENTITY_REMOVED = "%s Entit√§t wurde entfernt.";
+			ENTITIES_REMOVED = "%s Entit√§ten wurden entfernt.";
 			break;
 		case ENGLISH:
 			ENTITIES_LANG_FILE = "entities-en_us.json";
